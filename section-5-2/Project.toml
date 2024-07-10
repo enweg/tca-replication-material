@@ -1,0 +1,23 @@
+name = "gov-cons-anticipation"
+authors = ["Enrico Wegner"]
+
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+DataFramesMeta = "1313f7d8-7da2-5740-9ea0-a2ca25f37964"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+DrWatson = "634d3b9d-ee7a-5ddf-bec9-22491ea816e1"
+FredData = "6e85b7ee-7d24-5488-b1b7-e4f4198c51ac"
+GLMakie = "e9467ef8-e4e7-5192-8a1a-b1aee30e663a"
+JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
+Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+StructuralLocalProjections = "98b45fdc-3312-4049-bdd7-ca793c8f3f7f"
+StructuralMacroeconomics = "0776edcd-271e-4289-bdab-e9baf7e02e18"
+StructuralVectorAutoregressions = "a0b65e2d-552d-4657-91af-98af06fce48c"
+TransmissionChannelAnalysis = "d500094b-e8d7-4ee4-9514-4e3996dd73c3"
+
+[compat]
+DrWatson = "2.13.0"
+julia = "1.9.0"

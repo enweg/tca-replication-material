@@ -1,0 +1,209 @@
+Starting Dynare (version 5.5-arm64).
+Calling Dynare with arguments: none
+Starting preprocessing of the model file ...
+WARNING: in the 'steady_state_model' block, variable 'ewma' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'epinfma' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'zcapf' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'rkf' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'kf' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'pkf' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'cf' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'invef' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'yf' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'labf' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'wf' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'rrf' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'mc' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'zcap' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'rk' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'k' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'pk' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'c' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'inve' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'y' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'lab' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'pinf' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'piexp' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'w' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'r' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'a' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'b' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'g' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'qs' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'ms' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'spinf' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'sw' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'kpf' is not assigned a value
+WARNING: in the 'steady_state_model' block, variable 'kp' is not assigned a value
+Found 41 equation(s).
+Evaluating expressions...done
+Computing static model derivatives (order 1).
+Computing dynamic model derivatives (order 2).
+Processing outputs ...
+done
+Preprocessing completed.
+
+
+You did not declare endogenous variables after the estimation/calib_smoother command.
+The posterior mode file usmodel_mode has been generated using an older version of Dynare. It cannot be verified if it matches the present model. Proceed at your own risk.
+
+[Warning: Some of the parameters have no value (ccs, cinvs, crdpi) when using initial_estimation_checks. If these parameters
+are not initialized in a steadystate file or a steady_state_model-block, Dynare may not be able to solve the model. Note
+that simul, perfect_foresight_setup, and perfect_foresight_solver do not automatically call the steady state file.] 
+Initial value of the log posterior (or likelihood): -1762.508
+
+RESULTS FROM POSTERIOR ESTIMATION
+parameters
+           prior mean     mode    s.d.  prior pstdev
+
+crhoa          0.5000   0.9588  0.0102   beta 0.2000 
+crhob          0.5000   0.1824  0.0840   beta 0.2000 
+crhog          0.5000   0.9762  0.0082   beta 0.2000 
+crhoqs         0.5000   0.7096  0.0590   beta 0.2000 
+crhoms         0.5000   0.1271  0.0654   beta 0.2000 
+crhopinf       0.5000   0.9038  0.0465   beta 0.2000 
+crhow          0.5000   0.9719  0.0128   beta 0.2000 
+cmap           0.5000   0.7449  0.0868   beta 0.2000 
+cmaw           0.5000   0.8881  0.0511   beta 0.2000 
+csadjcost      4.0000   5.4882  1.0291   norm 1.5000 
+csigma         1.5000   1.3952  0.1309   norm 0.3750 
+chabb          0.7000   0.7124  0.0415   beta 0.1000 
+cprobw         0.5000   0.7375  0.0706   beta 0.1000 
+csigl          2.0000   1.9199  0.6190   norm 0.7500 
+cprobp         0.5000   0.6563  0.0583   beta 0.1000 
+cindw          0.5000   0.5920  0.1330   beta 0.1500 
+cindp          0.5000   0.2284  0.0919   beta 0.1500 
+czcap          0.5000   0.5472  0.1154   beta 0.1500 
+cfc            1.2500   1.6150  0.0777   norm 0.1250 
+crpi           1.5000   2.0295  0.1812   norm 0.2500 
+crr            0.7500   0.8153  0.0244   beta 0.1000 
+cry            0.1250   0.0847  0.0225   norm 0.0500 
+crdy           0.1250   0.2229  0.0273   norm 0.0500 
+constepinf     0.6250   0.8180  0.0977   gamm 0.1000 
+constebeta     0.2500   0.1607  0.0605   gamm 0.1000 
+constelab      0.0000  -0.1031  0.6051   norm 2.0000 
+ctrend         0.4000   0.4320  0.0142   norm 0.1000 
+cgy            0.5000   0.5261  0.0888   norm 0.2500 
+calfa          0.3000   0.1928  0.0175   norm 0.0500 
+
+standard deviation of shocks
+           prior mean     mode    s.d.  prior pstdev
+
+ea             0.1000   0.4518  0.0275   invg 2.0000 
+eb             0.1000   0.2425  0.0233   invg 2.0000 
+eg             0.1000   0.5200  0.0298   invg 2.0000 
+eqs            0.1000   0.4501  0.0484   invg 2.0000 
+em             0.1000   0.2398  0.0147   invg 2.0000 
+epinf          0.1000   0.1411  0.0167   invg 2.0000 
+ew             0.1000   0.2444  0.0221   invg 2.0000 
+
+
+Log data density [Laplace approximation] is -1844.098559.
+
+[Warning: Some of the parameters have no value (ccs, cinvs, crdpi) when using stoch_simul. If these parameters are not
+initialized in a steadystate file or a steady_state_model-block, Dynare may not be able to solve the model. Note that simul,
+perfect_foresight_setup, and perfect_foresight_solver do not automatically call the steady state file.] 
+
+MODEL SUMMARY
+
+  Number of variables:         41
+  Number of stochastic shocks: 7
+  Number of state variables:   20
+  Number of jumpers:           12
+  Number of static variables:  15
+
+
+MATRIX OF COVARIANCE OF EXOGENOUS SHOCKS
+Variables          ea        eb        eg       eqs        em     epinf        ew
+ea           0.204113  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+eb           0.000000  0.058787  0.000000  0.000000  0.000000  0.000000  0.000000
+eg           0.000000  0.000000  0.270411  0.000000  0.000000  0.000000  0.000000
+eqs          0.000000  0.000000  0.000000  0.202596  0.000000  0.000000  0.000000
+em           0.000000  0.000000  0.000000  0.000000  0.057523  0.000000  0.000000
+epinf        0.000000  0.000000  0.000000  0.000000  0.000000  0.019916  0.000000
+ew           0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.059727
+
+POLICY AND TRANSITION FUNCTIONS
+                                  dy              dc           dinve          labobs         pinfobs              dw            robs           piexp
+Constant                    0.432026        0.432026        0.432026       -0.103065        0.817982        0.432026        1.589136               0
+ewma(-1)                    2.062663        2.980750        1.512253        1.739964       -4.047080       -3.198096       -1.024734       -4.915118
+epinfma(-1)                 1.969387        0.805864        5.643383        0.927226       -3.530035        4.468039       -0.853202       -3.536562
+yf(-1)                     -0.153736       -0.156475       -0.237166       -0.103739       -0.031255       -0.027490        0.174535       -0.037580
+y(-1)                      -0.846264        0.156475        0.237166        0.103739        0.031255        0.027490       -0.174535        0.037580
+r(-1)                      -0.562273       -0.572288       -0.867406       -0.379413       -0.114313       -0.100543        0.638342       -0.137445
+a(-1)                       0.225350        0.234854        0.821776       -0.929615       -0.129100        0.140912       -0.166420       -0.135410
+b(-1)                       0.315021        0.382675        0.265025        0.214896        0.013445        0.032509        0.080192        0.015230
+g(-1)                       0.921765       -0.111110       -0.226630        0.636824        0.026853        0.012855        0.052902        0.031067
+qs(-1)                      0.474180       -0.038687        2.696155        0.323625        0.053798        0.047330        0.052533        0.064295
+ms(-1)                     -0.099237       -0.100047       -0.156499       -0.066928       -0.020934       -0.018115        0.095611       -0.025184
+spinf(-1)                  -2.389601       -0.977813       -6.847528       -1.125071        4.283249       -5.421397        1.035252        4.291169
+sw(-1)                     -2.257069       -3.261686       -1.654783       -1.903956        4.428518        3.499517        1.121315        5.378369
+kpf(-1)                     0.011290        0.010144        0.022401        0.007607        0.005027        0.002130        0.006327        0.006122
+kp(-1)                     -0.078318        0.046400       -0.041721       -0.173670       -0.025870        0.015459       -0.028380       -0.029074
+cf(-1)                      0.014422        0.019558        0.004795        0.009898       -0.002283        0.000882       -0.079196       -0.002859
+invef(-1)                   0.008748        0.010072        0.009321        0.005943        0.000471        0.001152       -0.024271        0.000537
+c(-1)                       0.489007       -0.270435       -0.080165        0.336759        0.013810        0.017926        0.121836        0.015690
+inve(-1)                    0.156620        0.002060       -0.161348        0.107655        0.005420        0.007814        0.039395        0.006205
+pinf(-1)                   -0.058432       -0.076384       -0.147929       -0.065376        0.243417        0.255425        0.077291        0.064947
+w(-1)                       0.024464       -0.038046       -0.083249       -0.059886        0.070869       -0.212853        0.032397        0.069182
+ea                          0.731844        0.185068        0.734964       -0.626358       -0.120179        0.153900       -0.145063       -0.124488
+eb                          1.726715        2.097545        1.452675        1.177904        0.073698        0.178190        0.439556        0.083477
+eg                          0.944276       -0.113823       -0.232164        0.652376        0.027508        0.013169        0.054194        0.031826
+eqs                         0.668265       -0.054522        3.799706        0.456087        0.075818        0.066702        0.074035        0.090612
+em                         -0.780588       -0.786961       -1.231003       -0.526444       -0.164663       -0.142493        0.752064       -0.198092
+epinf                      -0.787984       -0.428881       -1.769355       -0.351480        1.725964       -1.987735        0.458892        0.941214
+ew                         -0.155397       -0.358495       -0.298564       -0.278016        0.521800        1.746470        0.158494        0.602905
+
+
+THEORETICAL MOMENTS
+VARIABLE         MEAN  STD. DEV.   VARIANCE
+dy             0.4320     0.9436     0.8904
+dc             0.4320     0.6883     0.4737
+dinve          0.4320     2.3842     5.6842
+labobs        -0.1031     2.9752     8.8518
+pinfobs        0.8180     0.5675     0.3220
+dw             0.4320     0.5563     0.3095
+robs           1.5891     0.6213     0.3860
+piexp          0.0000     0.4902     0.2403
+
+
+
+VARIANCE DECOMPOSITION (in percent)
+               ea      eb      eg     eqs      em   epinf      ew
+dy          15.91   22.10   28.63   15.97    6.31    4.55    6.52
+dc           5.02   61.20    2.17    1.01   11.72    4.35   14.53
+dinve        5.89    2.47    0.79   81.98    2.55    3.76    2.55
+labobs       1.99    2.62   10.48    8.63    3.36    6.19   66.73
+pinfobs      4.04    0.61    1.01    3.40    4.59   28.56   57.79
+dw           4.28    0.79    0.09    2.06    1.51   29.15   62.13
+robs        10.38    7.68    3.92   19.39   15.46    7.16   36.01
+piexp        4.19    0.69    1.27    4.08    5.50   13.58   70.70
+
+
+
+MATRIX OF CORRELATIONS
+Variables         dy       dc    dinve   labobs  pinfobs       dw     robs    piexp
+dy            1.0000   0.6224   0.6251   0.0878  -0.2350   0.2525  -0.2166  -0.1936
+dc            0.6224   1.0000   0.3017   0.0858  -0.3023   0.1417  -0.2314  -0.2804
+dinve         0.6251   0.3017   1.0000   0.0641  -0.1417   0.2258  -0.1805  -0.0913
+labobs        0.0878   0.0858   0.0641   1.0000  -0.3601   0.1544  -0.2632  -0.3757
+pinfobs      -0.2350  -0.3023  -0.1417  -0.3601   1.0000  -0.1674   0.6748   0.9784
+dw            0.2525   0.1417   0.2258   0.1544  -0.1674   1.0000  -0.1509  -0.0198
+robs         -0.2166  -0.2314  -0.1805  -0.2632   0.6748  -0.1509   1.0000   0.6751
+piexp        -0.1936  -0.2804  -0.0913  -0.3757   0.9784  -0.0198   0.6751   1.0000
+
+
+
+COEFFICIENTS OF AUTOCORRELATION
+Order            1        2        3        4        5
+dy          0.2773   0.1613   0.0973   0.0537   0.0222
+dc          0.3213   0.1694   0.1155   0.0825   0.0569
+dinve       0.5979   0.3363   0.1629   0.0493  -0.0233
+labobs      0.9748   0.9416   0.9051   0.8672   0.8293
+pinfobs     0.8451   0.7367   0.6481   0.5727   0.5083
+dw          0.1706   0.1572   0.1193   0.0814   0.0487
+robs        0.9085   0.8025   0.7059   0.6218   0.5497
+piexp       0.8911   0.7964   0.7133   0.6409   0.5783
+Total computing time : 0h00m01s
+Note: 34 warning(s) encountered in the preprocessor
+Note: warning(s) encountered in MATLAB/Octave code
