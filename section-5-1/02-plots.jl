@@ -1,5 +1,6 @@
 using DrWatson
 @quickactivate "instrument-comparison"
+using Pkg; Pkg.instantiate()
 
 using JLD2
 using CairoMakie
