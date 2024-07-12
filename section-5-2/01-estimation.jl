@@ -1,10 +1,10 @@
 using DrWatson
 @quickactivate "gov-cons-anticipation"
+using Pkg; Pkg.instantiate()
 using DataFrames, CSV, DataFramesMeta
 using StatsBase, LinearAlgebra
 using JLD2
 
-using Pkg
 Pkg.add(url="https://github.com/enweg/TransmissionChannelAnalysis.jl.git#b03801a");
 using TransmissionChannelAnalysis
 

@@ -1,5 +1,6 @@
 using DrWatson
 @quickactivate "gov-cons-anticipation"
+using Pkg; Pkg.instantiate()
 using DataFrames, CSV, DataFramesMeta
 using CairoMakie
 CairoMakie.activate!()
