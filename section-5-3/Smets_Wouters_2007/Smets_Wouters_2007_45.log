@@ -47,9 +47,9 @@ Preprocessing completed.
 You did not declare endogenous variables after the estimation/calib_smoother command.
 The posterior mode file usmodel_mode has been generated using an older version of Dynare. It cannot be verified if it matches the present model. Proceed at your own risk.
 
-[Warning: Some of the parameters have no value (ccs, cinvs, crdpi) when using initial_estimation_checks. If these parameters
-are not initialized in a steadystate file or a steady_state_model-block, Dynare may not be able to solve the model. Note
-that simul, perfect_foresight_setup, and perfect_foresight_solver do not automatically call the steady state file.] 
+[Warning: Some of the parameters have no value (ccs, cinvs, crdpi) when using initial_estimation_checks. If these parameters are not initialized in
+a steadystate file or a steady_state_model-block, Dynare may not be able to solve the model. Note that simul, perfect_foresight_setup, and
+perfect_foresight_solver do not automatically call the steady state file.] 
 Initial value of the log posterior (or likelihood): -1762.508
 
 RESULTS FROM POSTERIOR ESTIMATION
@@ -100,9 +100,9 @@ ew             0.1000   0.2444  0.0221   invg 2.0000
 
 Log data density [Laplace approximation] is -1844.098559.
 
-[Warning: Some of the parameters have no value (ccs, cinvs, crdpi) when using stoch_simul. If these parameters are not
-initialized in a steadystate file or a steady_state_model-block, Dynare may not be able to solve the model. Note that simul,
-perfect_foresight_setup, and perfect_foresight_solver do not automatically call the steady state file.] 
+[Warning: Some of the parameters have no value (ccs, cinvs, crdpi) when using stoch_simul. If these parameters are not initialized in a steadystate
+file or a steady_state_model-block, Dynare may not be able to solve the model. Note that simul, perfect_foresight_setup, and
+perfect_foresight_solver do not automatically call the steady state file.] 
 
 MODEL SUMMARY
 
@@ -204,6 +204,6 @@ pinfobs     0.8451   0.7367   0.6481   0.5727   0.5083
 dw          0.1706   0.1572   0.1193   0.0814   0.0487
 robs        0.9085   0.8025   0.7059   0.6218   0.5497
 piexp       0.8911   0.7964   0.7133   0.6409   0.5783
-Total computing time : 0h00m01s
+Total computing time : 0h00m03s
 Note: 34 warning(s) encountered in the preprocessor
 Note: warning(s) encountered in MATLAB/Octave code
