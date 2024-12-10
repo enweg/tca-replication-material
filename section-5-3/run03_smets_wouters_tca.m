@@ -1,4 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Alternative transmission channels
+% Putting the econ variables before expectations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Clear working environment and run the Smets & Wouters (2007) model 
 % using Dynare.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,7 +37,8 @@ ix_inv = find(vars == "dinve");
 ix_y = find(vars == "dy");
 ix_e = find(vars == "piexp");
 T = eye(k);
-order = [ix_r, ix_e, ix_w, ix_c, ix_inv, ix_y, setdiff(1:k, [ix_r, ix_e, ix_w, ix_c, ix_inv, ix_y, ix_p]), ix_p];
+% order = [ix_r, ix_e, ix_w, ix_c, ix_inv, ix_y, setdiff(1:k, [ix_r, ix_e, ix_w, ix_c, ix_inv, ix_y, ix_p]), ix_p];
+order = [ix_r, ix_w, ix_c, ix_inv, ix_y, ix_e, setdiff(1:k, [ix_r, ix_w, ix_c, ix_inv, ix_y, ix_e, ix_p]), ix_p];
 T = T(order, :);
 
 
@@ -56,18 +63,15 @@ for i=1:length(horizons)
 
     % decomposing the total effect into transmission effects
     effect_not_ywe = through_not_x(M_, B, Oomega, [ix_w, ix_c, ix_inv, ix_y, ix_e], k) * shock_size;
-    effect_not_yw = through_not_x(M_, B, Oomega, [ix_w, ix_c, ix_inv, ix_y], k) * shock_size;
-    effect_e_not_yw = effect_not_yw - effect_not_ywe;
-    effect_y_or_w = irfs - effect_not_yw;
+    effect_not_e = through_not_x(M_, B, Oomega, [ix_e], k) * shock_size;
+    % effect_not_yw = through_not_x(M_, B, Oomega, [ix_w, ix_c, ix_inv, ix_y], k) * shock_size;
+    effect_y_not_e = effect_not_e - effect_not_ywe;
+    % effect_e_not_yw = effect_not_yw - effect_not_ywe;
+    effect_e = irfs - effect_not_e;
+    % effect_y_or_w = irfs - effect_not_yw;
 
-    df = table(vec(irfs(ix_p, ix_em, :)), vec(effect_not_ywe(ix_p, ix_em, :)), vec(effect_e_not_yw(ix_p, ix_em, :)), vec(effect_y_or_w(ix_p, ix_em, :)));
-    df.Properties.VariableNames = {'total', 'interest_rate', 'expectations', 'output_wage'};
-    writetable(df, sprintf("output/effects-horizons-%d.csv", horizon));
-
-    % saving the total IRFs
-    irfs = squeeze(irfs(:, ix_em, :));
-    irfs = irfs';
-    irfs_table = array2table(irfs, 'VariableNames', vars);
-    writetable(irfs_table, sprintf("output/irfs-horizons-%d.csv", horizon));
+    df = table(vec(irfs(ix_p, ix_em, :)), vec(effect_not_ywe(ix_p, ix_em, :)), vec(effect_y_not_e(ix_p, ix_em, :)), vec(effect_e(ix_p, ix_em, :)));
+    df.Properties.VariableNames = {'total', 'interest_rate', 'output_wage', 'expectations'};
+    writetable(df, sprintf("output/alternative-effects-horizons-%d.csv", horizon));
 end
 

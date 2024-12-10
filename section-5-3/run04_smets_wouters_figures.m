@@ -1,10 +1,14 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figures for alternative channels
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 clear;
 clc;
 
 horizons = [16, 32, 40, 52, 100];
 for i=1:length(horizons)
     horizon = horizons(i);
-    df = readtable(sprintf("output/effects-horizons-%d", horizon));
+    df = readtable(sprintf("output/alternative-effects-horizons-%d", horizon));
 
     stackdata = [df.interest_rate df.expectations df.output_wage];
     fig = figure;
@@ -18,8 +22,8 @@ for i=1:length(horizons)
     ylabel('Response of Inflation', 'FontSize', 15)
     lgd = legend( ...
         "Pure Interest Rate", ...
-        "Expectations (no Output or Wage)", ...
-        "Output or Wage", ...
+        "Expectations", ...
+        "Output or Wage (no Expectations)", ...
         "Total", ...
         'FontSize', 15, ...
         'Location', 'southoutside', ...
@@ -36,6 +40,6 @@ for i=1:length(horizons)
     height = 15;
     set(fig, 'PaperSize', [width height]);
     set(fig, 'PaperPosition', [0 0 width height]);
-    filename = sprintf("plots/smets-wouters-decomposition-horizon-%d.pdf", horizon);
+    filename = sprintf("plots/alternative-smets-wouters-decomposition-horizon-%d.pdf", horizon);
     saveas(fig, filename);
 end
