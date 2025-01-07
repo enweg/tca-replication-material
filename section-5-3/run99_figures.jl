@@ -1,5 +1,7 @@
 projectdir(parts...) = normpath(joinpath(@__DIR__, parts...))
 
+using Pkg; Pkg.activate(".");  # assumes working directory is section-5-3
+Pkg.instantiate();
 using CSV, DataFrames
 using CairoMakie
 using Colors
