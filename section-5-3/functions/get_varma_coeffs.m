@@ -100,7 +100,7 @@ function [A0, Phis, Psis, vars]=get_varma_coeffs(M_, options_, oo_, p, q, obs_va
     Phis(:, :, kappa) = pinv_coef_et * (Ax * Fx_plus(:, ((k-1)*n+1):(k*n)) - Fx_plus(:, (k*n+1):((k+1)*n)));
   end
   
-  Psis(:, :, 1) = pinv_coef_et * (Bx - Ax * Fx_plus*Gs(:, :, end));
+  Psis(:, :, end) = pinv_coef_et * (Bx - Ax * Fx_plus*Gs(:, :, end));
   for k=1:kappa
     Psis(:, :, k) = pinv_coef_et * (Fx_plus * Gs(:, :, k+1) - Ax * Fx_plus * Gs(:, :, k));
   end
