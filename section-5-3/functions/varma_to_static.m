@@ -1,7 +1,6 @@
 % Convert a VARMA into the static form x = B*x + Omega*eps used in Wegner etal (2024).
 %
 % Inputs:
-%   vars    - Vector of variable IDs.
 %   A0      - Initial impact matrix of size k x k.
 %   Phis    - VAR coefficient matrices of size k x k x p.
 %   Psis    - MA coefficient matrices of size k x k x q.
@@ -23,19 +22,20 @@
 %     Transmission Channel Analysis in Dynamic Models. 
 %     arXiv preprint arXiv:2405.18987.
 %
-function [B, Oomega, k, vars]=varma_to_static(vars, A0, Phis, Psis, horizon, T)
+function [B, Oomega]=varma_to_static(As, Psis, horizon, T)
+  A0 = As{1};
+  As = As(2:end);
   h = horizon;
   k = size(A0, 1);
-  p = size(Phis, 3);
-  q = size(Psis, 3);
+  p = length(As);
+  q = length(Psis);
 
-  if nargin > 5
+  if nargin > 3
     warning("Reordering variables")
     A0 = A0 * T';
     for i=1:p
-      Phis(:, :, i) = Phis(:, :, i) * T';
+      As{i} = As{i} * T';
     end
-    vars = vars(T * vec(1:k));
   end
 
   [Q, L] = ql(A0);
@@ -53,15 +53,14 @@ function [B, Oomega, k, vars]=varma_to_static(vars, A0, Phis, Psis, horizon, T)
       else
         i = r - c;
         if i <= p
-          B((k*(r-1)+1):(k*r), (k*(c-1)+1):(k*c)) = DQt * Phis(:, :, i);
+          B((k*(r-1)+1):(k*r), (k*(c-1)+1):(k*c)) = DQt * As{i};
         end
         if i <= q
-          Oomega((k*(r-1)+1):(k*r), (k*(c-1)+1):(k*c)) = DQt * Psis(:, :, i);
+          Oomega((k*(r-1)+1):(k*r), (k*(c-1)+1):(k*c)) = DQt * Psis{i};
         end
       end
     end
   end
-
 end
 
 
