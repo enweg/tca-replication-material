@@ -1,3 +1,67 @@
+/*
+ * This file provides replication files for 
+ * Smets, Frank and Wouters, Rafael (2007): "Shocks and Frictions in US Business Cycles: A Bayesian
+ * DSGE Approach", American Economic Review, 97(3), 586-606, that are compatible with Dynare 4.5 onwards
+ *
+ * To replicate the full results, you have to get back to the original replication files available at
+ * https://www.aeaweb.org/articles.php?doi=10.1257/aer.97.3.586 and include the respective estimation commands and mode-files.
+ *
+ * Notes:
+ *  - The consumption Euler equation in the paper, equation (2), premultiplies the risk premium process \varepsilon_t^b,
+ *      denoted by b in this code, by the coefficient c_3. In the code this prefactor is omitted by setting the 
+ *      coefficient to 1. As a consequence, b in this code actually is b:=c_3*\varepsilon_t^b. As a consequence, in 
+ *      the arbitrage equation for the value of capital in the paper, equation (4), the term 1*\varepsilon_t^b
+ *      is replaced by 1/c_3*b, which is equal to \varepsilon_t^b given the above redefinition. This rescaling also explains why the 
+ *      standard deviation of the risk premium shock in the AR(1)-process for b has a different standard deviation than reported
+ *      in the paper. However, the results are unaffected by this scaling factor (except for the fact that the posterior distribution
+ *      reported in the paper cannot be directly translated to the present mod-file due to parameter correlation in the posterior.  
+ *  - As pointed out in Del Negro/Schorfheide (2012): "Notes on New-Keynesian Models"
+ *      in the code implementation of equation (8) for both the flex price and the sticky price/wage economy, 
+ *      there is a (1+cbetabar*cgamma) missing in the i_2 in front of q_t (denoted qs in the code). 
+ *      Equation (8) in the paper reads:  
+ *          (1-(1-delta)/gamma)*(1+beta*gamma^(1-sigma))*gamma^2*varphi
+ *      which translates to the code snippet:
+ *          (1-(1-ctou)/cgamma)*(1+cbetabar*cgamma)*cgamma^2*csadjcost
+ *      But the code implements
+ *          (1-(1-ctou)/cgamma)*cgamma^2*csadjcost
+ *      which corresponds to an equation reading
+ *          (1-(1-delta)/gamma)*gamma^2*varphi
+ *  - Chib/Ramamurthy (2010): "Tailored randomized block MCMC methods with application to DSGE models", Journal of Econometrics, 155, pp. 19-38
+ *      have pointed out that the mode reported in the original Smets/Wouters (2007) paper is not actually the mode. \bar \pi (constepinf) is estimated lower
+ *      while \bar \l (constelab) is higher.
+ *  - Note that at the prior mean, [cmap,crhopinf] and [cmaw,crhow] are pairwise collinear. Thus, running identification at the prior
+ *      mean will return a warning. But this is only a local issue. These parameters are only indistinguishable at the prior mean, but not 
+ *      at different points.
+ *  - In the prior Table 1A in the paper, the 
+ *          - habit parameter $\lambda$ is erroneously labeled h
+ *          - the fixed cost parameter $\phi_p$ is labeled $\Phi$ 
+ *  - Table 1B claims that $\rho_{ga}$ follows a beta prior with B(0.5,0.2^2), but the code shows that it actually
+ *      follows a normal distribution with N(0.5,0.25^2)
+ *
+ * This file was originally written by Frank Smets and Rafeal Wouters and has been updated by
+ * Johannes Pfeifer. 
+ *
+ * Please note that the following copyright notice only applies to this Dynare 
+ * implementation of the model
+ */
+
+/*
+ * Copyright (C) 2007-2013 Frank Smets and Raf Wouters
+ * Copyright (C) 2013-15 Johannes Pfeifer
+ *
+ * This is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This file is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You can receive a copy of the GNU General Public License
+ * at <http://www.gnu.org/licenses/>.
+ */
 
 var labobs      ${lHOURS}$      (long_name='log hours worked') 
     robs        ${FEDFUNDS}$    (long_name='Federal funds rate') 
@@ -253,7 +317,7 @@ robs = (((1+constepinf/100)/((1/(1+constebeta/100))*(1+ctrend/100)^(-csigma)))-1
 labobs = constelab;
 end;
 
-varobs dy dc dinve pinfobs dw robs piexp;
+varobs dy dc dinve pinfobs dw robs labobs;
 
 % shock_decomposition y;
 stoch_simul(order = 1, irf=20, nograph) dy dc dinve labobs pinfobs dw robs piexp;
