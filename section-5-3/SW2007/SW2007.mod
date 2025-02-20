@@ -92,10 +92,6 @@ var labobs      ${lHOURS}$      (long_name='log hours worked')
     y           ${y}$           (long_name='Output')
     lab         ${l}$           (long_name='hours worked')
     pinf        ${\pi}$         (long_name='Inflation')
-    /*
-    * Added the following model variable.
-    */
-    piexp       ${E\pi}$        (long_name='Expected Inflation')
     w           ${w}$           (long_name='real wage')
     r           ${r}$           (long_name='nominal interest rate')
     a           ${\varepsilon_a}$       (long_name='productivity process')
@@ -270,10 +266,6 @@ model(linear);
           [name='Law of motion for capital, SW Equation (8) (see header notes)']              
 	      kp =  (1-cikbar)*kp(-1)+cikbar*inve + cikbar*cgamma^2*csadjcost*qs ;
 
-/*
-* Added the following model equation.
-*/
-piexp = pinf(+1);
 
 // measurement equations
 [name='Observation equation output']              
@@ -320,4 +312,4 @@ end;
 varobs dy dc dinve pinfobs dw robs labobs;
 
 % shock_decomposition y;
-stoch_simul(order = 1, irf=20, nograph) dy dc dinve labobs pinfobs dw robs piexp;
+stoch_simul(order = 1, irf=20, nograph) dy dc dinve labobs pinfobs dw robs;
