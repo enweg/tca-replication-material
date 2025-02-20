@@ -1,4 +1,16 @@
 /*
+* This file was orignally part of the Dynare model collection of Johannes Pfeifer 
+* (https://github.com/JohannesPfeifer/DSGE_mod). See the copyright
+* notices below. Minor modifications have been made towards the end of the 
+* file. These modifications shut-off the shock decomposition, which is not 
+* of interest for out analysis, and calcualte the IRFs for some of the 
+* model variables. Addtionally, the estimation step was replaced by loading 
+* the pre-calibrated model parameters. These parameter values were directly 
+* taken from the estimated versions of the model (part of the original 
+* replication code). 
+*/
+
+/*
  * This file provides replication files for 
  * Smets, Frank and Wouters, Rafael (2007): "Shocks and Frictions in US Business Cycles: A Bayesian
  * DSGE Approach", American Economic Review, 97(3), 586-606, that are compatible with Dynare 4.5 onwards
