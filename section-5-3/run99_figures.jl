@@ -79,7 +79,7 @@ fig = with_theme(my_theme) do
     scat = scatter!(ax, tbl.x, tbl.total; color=:black, markersize=15)
     elements = [PolyElement(polycolor=colors[i]) for i = 1:2]
     elements = vcat([[LineElement(color=:black, linewidth=3), MarkerElement(marker=:circle, markercolor=:black, markersize=15)]], elements)
-    labels = ["Total", "Not Through Wages", "Through Wages"]
+    labels = ["Total", "Demand Channel", "Wage Channel"]
     Legend(fig[2, :], elements, labels, "Effect"; orientation=:horizontal, framevisible=false, titleposition=:left)
     fig
 end;
@@ -116,7 +116,7 @@ fig = with_theme(my_theme) do
     scat = scatter!(ax, tbl.x, tbl.total; color=:black, markersize=15)
     elements = [PolyElement(polycolor=colors[i]) for i = 1:2]
     elements = vcat([[LineElement(color=:black, linewidth=3), MarkerElement(marker=:circle, markercolor=:black, markersize=15)]], elements)
-    labels = ["Total", "Not Through Wages", "Through Wages"]
+    labels = ["Total", "Demand Channel", "Wage Channel"]
     Legend(fig[2, :], elements, labels, "Effect"; orientation=:horizontal, framevisible=false, titleposition=:left)
     fig
 end;
@@ -166,8 +166,8 @@ fig = with_theme(my_theme) do
     scat = scatter!(ax, tbl.x, tbl.total; color=:black, markersize=15);
     elements = [PolyElement(polycolor=col) for col in colors];
     elements = vcat([[LineElement(color=:black, linewidth=3), MarkerElement(marker=:circle, markercolor=:black, markersize=15)]], elements);
-    labels = ["Total", "Not Through Wages", "Through Wages", "Not Through Wages", "Through Wages"];
-    Legend(fig[2, :], [[elements[1]], elements[2:3], elements[4:end]], [[labels[1]], labels[2:3], labels[4:end]], ["", "Ordering 1", "Ordering 2"]; orientation=:horizontal, framevisible=false, titleposition=:left, nbanks=2)
+    labels = ["Total", "Demand Channel", "Wage Channel", "Demand Channel", "Wage Channel"];
+    Legend(fig[2, :], [[elements[1]], elements[2:3], elements[4:end]], [[labels[1]], labels[2:3], labels[4:end]], ["", "first-round\nordering", "second-round\nordering"]; orientation=:horizontal, framevisible=false, titleposition=:left, nbanks=2)
     fig
 end;
 

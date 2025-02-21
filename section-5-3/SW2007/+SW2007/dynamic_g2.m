@@ -22,6 +22,6 @@ function g2 = dynamic_g2(T, y, x, params, steady_state, it_, T_flag)
 if T_flag
     T = SW2007.dynamic_g2_tt(T, y, x, params, steady_state, it_);
 end
-g2 = sparse([],[],[],41,6400);
+g2 = sparse([],[],[],40,6241);
 
 end
