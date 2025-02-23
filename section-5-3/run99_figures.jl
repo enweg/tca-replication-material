@@ -1,6 +1,6 @@
 ################################################################################
 # REPLICATION INFORMATION
-# 1. Check the current path by running line XXX. 
+# 1. Check the current path by running line 12. 
 # 2. If the current path is different from the folder `section-5-3`, then 
 #    uncomment lines 13-14, adjust the path in quotation marks on line 13 and 
 #    run the line. 
@@ -50,7 +50,7 @@ my_theme = Theme(
 );
 
 ################################################################################
-# Decomposition Figure (original ordering)
+# Decomposition Figure (wages before demand system)
 ################################################################################
 
 effects = CSV.read(projectdir("output", "effects-horizons-$horizon.csv"), DataFrame)
@@ -88,7 +88,7 @@ save(projectdir("plots", "smets-wouters-decomposition-horizon-$horizon-julia.pdf
 
 
 ################################################################################
-# Decomposition Figure (alternative ordering)
+# Decomposition Figure (wages after demand system)
 ################################################################################
 
 effects = CSV.read(projectdir("output", "effects-horizons-$horizon-alternative.csv"), DataFrame)
@@ -124,8 +124,8 @@ end;
 save(projectdir("plots", "smets-wouters-decomposition-horizon-$horizon-julia-alternative.pdf"), fig)
 
 ################################################################################
-# The differences between the actual decompositions are very small. 
-# The next graph makes these differences more clear
+# The differences between the two decompositions are very small. 
+# The next graph makes these differences more clear.
 ################################################################################
 
 effects_orig = CSV.read(projectdir("output", "effects-horizons-$horizon.csv"), DataFrame)

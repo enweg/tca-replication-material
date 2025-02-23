@@ -32,7 +32,7 @@ clc;
 %   variables only partially adjust if effects cannot go through wages. 
 %   If wages are mostly involved in second round effects, then ordering wages
 %   before or after the other variables should not make a difference. 
-%   ==> Will be investgated using XXX file. 
+%   ==> Will be investgated using `run003_sw2007.m` file. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 [As, Psis, p, q] = dynare_to_varma(M_, oo_, options_);

@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % REPLICATION INSTRUCTIONS: 
-% 1. If the `horizon` was changed in file XXX, then adjust the horizon on 
-%    line 10. Otherwise, the file can be run without changes. 
+% 1. If the `horizon` was changed in file `run001_sw2007.m`, then adjust 
+%    the horizon on line 10. Otherwise, the file can be run without changes. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clear;
