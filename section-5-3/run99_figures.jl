@@ -159,15 +159,15 @@ colors = vcat(colors_orig, colors_alt)
 
 fig = with_theme(my_theme) do
     fig = Figure(; size=(1200, 500));
-    ax = Axis(fig[1, 1]; title="", xlabel="Horizon", ylabel="Response of Inflation", ytickformat="{:.2f}");
+    ax = Axis(fig[1, 1]; title="", xlabel="Horizon", ylabel="Response of Inflation", ytickformat="{:.2f}", xticks = 0:horizon);
     ylims!(ax, -0.055, 0.02);
-    bar = barplot!(ax, tbl.x_barplot, tbl.y_barplot; stack=tbl.grp_stack, dodge=tbl.grp_dodge, color=colors[tbl.grp], width=(1 ./ tbl.grp_dodge),);
+    bar = barplot!(ax, tbl.x_barplot, tbl.y_barplot; stack=tbl.grp_stack, dodge=tbl.grp_dodge, color=colors[tbl.grp], dodge_gap=0.12);
     line = lines!(ax, tbl.x, tbl.total; color=:black, linewidth=3);
     scat = scatter!(ax, tbl.x, tbl.total; color=:black, markersize=15);
     elements = [PolyElement(polycolor=col) for col in colors];
     elements = vcat([[LineElement(color=:black, linewidth=3), MarkerElement(marker=:circle, markercolor=:black, markersize=15)]], elements);
-    labels = ["Total", "Demand Channel", "Wage Channel", "Demand Channel", "Wage Channel"];
-    Legend(fig[2, :], [[elements[1]], elements[2:3], elements[4:end]], [[labels[1]], labels[2:3], labels[4:end]], ["", "first-round\nordering", "second-round\nordering"]; orientation=:horizontal, framevisible=false, titleposition=:left, nbanks=2)
+    labels = ["Total", "Demand Channel 1", "Wage Channel 1", "Demand Channel 2", "Wage Channel 2"];
+    Legend(fig[2, :], [[elements[1]], elements[2:3], elements[4:end]], [[labels[1]], labels[2:3], labels[4:end]], ["", "", ""]; orientation=:horizontal, framevisible=false, titleposition=:left, nbanks=2)
     fig
 end;
 
