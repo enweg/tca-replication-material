@@ -1,10 +1,15 @@
+using Pkg;
+Pkg.add("DrWatson")  # replication manager
 using DrWatson
-@quickactivate "gov-cons-anticipation"
-using Pkg; Pkg.instantiate()
+@quickactivate "gov-cons-anticipation"  # activating the project
+Pkg.instantiate()  # installing all required packages
+
 using DataFrames, CSV, DataFramesMeta
 using StatsBase, LinearAlgebra
 using JLD2
 
+# installing a specific version of TransmissionChannelAnalysis.jl
+# for replication purposes. 
 Pkg.add(url="https://github.com/enweg/TransmissionChannelAnalysis.jl.git#b03801a");
 using TransmissionChannelAnalysis
 
@@ -39,8 +44,11 @@ irfs_ortho_stacked = TransmissionChannelAnalysis.to_transmission_irfs(irfs)
 effects = fill(NaN, size(irfs))
 k = size(irfs, 2)
 not_until = 20
-for h = 0:min((size(irfs, 3)-1), not_until)
-    s = join(["!x$(2+(i*k))" for i=0:h], " & ")
+for h = 0:min((size(irfs, 3) - 1), not_until)
+    # for each period h, the effect cannot go through any of government 
+    # military spending up to period h. The formal condition is created in the 
+    # following line.
+    s = join(["!x$(2+(i*k))" for i = 0:h], " & ")
     # @show h, s
     cond = make_condition(s)
     effect = transmission(1, irfs_stacked, irfs_ortho_stacked, cond; method=:irfs)
@@ -57,7 +65,7 @@ end
 ################################################################################
 
 JLD2.save(projectdir("output", "estimation-results.jld2"), Dict(
-    "irfs" => irfs, 
+    "irfs" => irfs,
     "effects" => effects
 ))
 

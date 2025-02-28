@@ -1,6 +1,12 @@
+################################################################################
+# DOES NOT NEED TO BE RUN DURING THE REPLICATION. ONLY CREATES THE DATASETS.
+################################################################################
+
+using Pkg; 
+Pkg.add("DrWatson")
 using DrWatson
 @quickactivate "gov-cons-anticipation"
-using Pkg; Pkg.instantiate()
+Pkg.instantiate()
 
 using DataFrames, CSV
 using DataFramesMeta
