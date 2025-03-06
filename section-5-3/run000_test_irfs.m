@@ -31,7 +31,7 @@ end
 
 n = size(C, 1);
 
-irfsDSGEea = [dy_ea dc_ea dinve_ea pinfobs_ea dw_ea robs_ea labsobs_ea];
+irfsDSGEea = [dy_ea dc_ea dinve_ea pinfobs_ea dw_ea robs_ea labobs_ea];
 irfsDSGEea = reshape(irfsDSGEea', n, 1, []);
 [shock_size, idx] = get_shock_size(M_, "ea");
 test = max(vec(abs(irfsDSGEea - irfsVarma(:, idx, :) * shock_size))) < tol;
@@ -39,7 +39,7 @@ if ~test
     error("DSGE IRFs for ea ~= VARMA IRFs")
 end
 
-irfsDSGEeb = [dy_eb dc_eb dinve_eb pinfobs_eb dw_eb robs_eb labsobs_eb];
+irfsDSGEeb = [dy_eb dc_eb dinve_eb pinfobs_eb dw_eb robs_eb labobs_eb];
 irfsDSGEeb = reshape(irfsDSGEeb', n, 1, []);
 [shock_size, idx] = get_shock_size(M_, "eb");
 test = max(vec(abs(irfsDSGEeb - irfsVarma(:, idx, :) * shock_size))) < tol;
@@ -47,7 +47,7 @@ if ~test
     error("DSGE IRFs for eb ~= VARMA IRFs")
 end
 
-irfsDSGEeg = [dy_eg dc_eg dinve_eg pinfobs_eg dw_eg robs_eg labsobs_eg];
+irfsDSGEeg = [dy_eg dc_eg dinve_eg pinfobs_eg dw_eg robs_eg labobs_eg];
 irfsDSGEeg = reshape(irfsDSGEeg', n, 1, []);
 [shock_size, idx] = get_shock_size(M_, "eg");
 test = max(vec(abs(irfsDSGEeg - irfsVarma(:, idx, :) * shock_size))) < tol;
@@ -55,7 +55,7 @@ if ~test
     error("DSGE IRFs for eg ~= VARMA IRFs")
 end
 
-irfsDSGEeqs = [dy_eqs dc_eqs dinve_eqs pinfobs_eqs dw_eqs robs_eqs labsobs_eqs];
+irfsDSGEeqs = [dy_eqs dc_eqs dinve_eqs pinfobs_eqs dw_eqs robs_eqs labobs_eqs];
 irfsDSGEeqs = reshape(irfsDSGEeqs', n, 1, []);
 [shock_size, idx] = get_shock_size(M_, "eqs");
 test = max(vec(abs(irfsDSGEeqs - irfsVarma(:, idx, :) * shock_size))) < tol;
@@ -63,7 +63,7 @@ if ~test
     error("DSGE IRFs for eqs ~= VARMA IRFs")
 end
 
-irfsDSGEem = [dy_em dc_em dinve_em pinfobs_em dw_em robs_em labsobs_em];
+irfsDSGEem = [dy_em dc_em dinve_em pinfobs_em dw_em robs_em labobs_em];
 irfsDSGEem = reshape(irfsDSGEem', n, 1, []);
 [shock_size, idx] = get_shock_size(M_, "em");
 test = max(vec(abs(irfsDSGEem - irfsVarma(:, idx, :) * shock_size))) < tol;
@@ -71,7 +71,7 @@ if ~test
     error("DSGE IRFs for em ~= VARMA IRFs")
 end
 
-irfsDSGEepinf = [dy_epinf dc_epinf dinve_epinf pinfobs_epinf dw_epinf robs_epinf labsobs_epinf];
+irfsDSGEepinf = [dy_epinf dc_epinf dinve_epinf pinfobs_epinf dw_epinf robs_epinf labobs_epinf];
 irfsDSGEepinf = reshape(irfsDSGEepinf', n, 1, []);
 [shock_size, idx] = get_shock_size(M_, "epinf");
 test = max(vec(abs(irfsDSGEepinf - irfsVarma(:, idx, :) * shock_size))) < tol;
@@ -79,7 +79,7 @@ if ~test
     error("DSGE IRFs for epinf ~= VARMA IRFs")
 end
 
-irfsDSGEew = [dy_ew dc_ew dinve_ew pinfobs_ew dw_ew robs_ew labsobs_ew];
+irfsDSGEew = [dy_ew dc_ew dinve_ew pinfobs_ew dw_ew robs_ew labobs_ew];
 irfsDSGEew = reshape(irfsDSGEew', n, 1, []);
 [shock_size, idx] = get_shock_size(M_, "ew");
 test = max(vec(abs(irfsDSGEew - irfsVarma(:, idx, :) * shock_size))) < tol;
