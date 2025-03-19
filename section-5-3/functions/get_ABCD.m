@@ -26,6 +26,6 @@ function [A, B, C, D]=get_ABCD(M_, oo_, options_)
     if user_has_matlab_license('control_toolbox')
         [A,B,C,D]=minreal(A,B,C,D); %Matlab control toolbox
     else
-        error('Control Toolbox is missing')
+        error('Control System Toolbox is missing')
     end
 end
