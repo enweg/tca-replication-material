@@ -36,9 +36,9 @@ function [Ax, Ay, B, Cx, Cy, D, vars]=get_ABCD_varma(M_, options_, oo_, obs_var)
   vars = [ipred; obs_var];
 
   %get state transition matrices
-  [A,B] = kalman_transition_matrix(oo_.dr,ipred,1:M_.nspred,M_.exo_nbr);
+  [A,B] = kalman_transition_matrix(oo_.dr,ipred,1:M_.nspred);
   %get observation equation matrices
-  [C,D] = kalman_transition_matrix(oo_.dr,obs_var,1:M_.nspred,M_.exo_nbr);
+  [C,D] = kalman_transition_matrix(oo_.dr,obs_var,1:M_.nspred);
 
   % Stack them into a VAR
   ns = size(A, 1);
