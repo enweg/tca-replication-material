@@ -31,7 +31,7 @@ function [B, Oomega]=varma_to_static(As, Psis, horizon, T)
   q = length(Psis);
 
   if nargin > 3
-    warning("Reordering variables")
+    disp("[INFO] varma_to_static: A transmission matrix was provided, so varibles will be re-ordered. This does not affect the total effects. No steps need to be taken.")
     A0 = A0 * T';
     for i=1:p
       As{i} = As{i} * T';
