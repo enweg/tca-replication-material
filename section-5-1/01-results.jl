@@ -53,6 +53,7 @@ data_gk = select(vardata, :mp1_tc, :ffr, :ygap, :infl, :lpcom);
 data_gk = Matrix(Float64.(data_gk));
 
 # computing structural IRFs via internal instruments
+# See `svar-internal-instrument.jl` file in `scripts` for more details.  
 relative_irfs_gk = internal_instrument_SVAR(data_gk, 4, 0:40; include_constant = true, include_linear_trend = true);
 
 # getting the orthogonal IRFs / the Cholesky IRFs 
