@@ -20,7 +20,7 @@ clc;
 tol = 1e-9;  % accepted tolerance throughout all tests
 
 [As, Psis, p, q] = dynare_to_varma(M_, oo_, options_);
-irfsVarma = irf_varma_cell(As, Psis, 19);
+irfsVarma = irf_varma(As, Psis, 19);
 
 [A, B, C, D] = get_ABCD(M_, oo_, options_);
 irfsSS = irf_state_space(A, B, C, D, 19);

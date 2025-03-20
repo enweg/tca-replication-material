@@ -15,7 +15,7 @@
 %   vars    - Reordered vector of variable IDs.
 %
 % Notes:
-%           - The VARMA coefficients can be obtained from get_varma_coeffs
+%           - The VARMA coefficients can be obtained from dynare_to_varma 
 %
 % References: 
 %   - Wegner, E., Lieb, L., Smeekes, S., & Wilms, I. (2024). 

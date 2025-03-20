@@ -6,7 +6,7 @@
 %   B       - See Wegner etal (2024). Obtained using `varma_to_static`
 %   Oomega  - See Wegner etal (2024). Obtained using `varma_to_static`
 %   k       - Number of variables in the system. Corresponds to the 
-%             dimension of A0 returned by `get_varma_coeffs`
+%             dimension of `As{1}` returned by `dynare_to_varma`
 %
 % Outputs:
 %   Ttheta  - 3D array of IRFs. The dimensions are (k, nexo, horizon+1), 

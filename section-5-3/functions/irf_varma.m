@@ -11,21 +11,22 @@
 %             to the number of variables, the number of shocks, and the number 
 %             of periods respectively.
 %
-function irfs=irf_varma(A0, Phis, Psis, horizon)
-  p = size(Phis, 3);
-  q = size(Psis, 3);
-  n = size(A0, 1);
-  A0inv = inv(A0);
+function irfs=irf_varma(As, Psis, horizon)
+  p = length(As) - 1;  % also includes A0;
+  q = length(Psis);
+  A0inv = inv(As{1});
+  As = As(2:end);
+  n = size(A0inv, 1);
 
   % calculating irfs
   irfs = zeros(n, n, horizon+1);
   irfs(:, :, 1) = A0inv;
   for h=1:horizon
     for i=1:min(p, h)
-      irfs(:, :, h+1) = irfs(:, :, h+1) + Phis(:, :, i)*irfs(:, :, h-i+1);
+      irfs(:, :, h+1) = irfs(:, :, h+1) + As{i}*irfs(:, :, h-i+1);
     end
     if h <= q
-      irfs(:, :, h+1) = irfs(:, :, h+1) + Psis(:, :, h);
+      irfs(:, :, h+1) = irfs(:, :, h+1) + Psis{h};
     end
     irfs(:, :, h+1) = A0inv * irfs(:, :, h+1);
   end
