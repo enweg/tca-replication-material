@@ -18,9 +18,9 @@
 - 'plots' contains all plots created using 'run002_sw2007_figures.m', 'run004_sw2007_figures.m' and 'run99_figures.jl'.
 
 ## System Settings 
-- The scripts were run on a MacBook Air M1 running Matlab R2023b 
-  Update 4 (23.2.0.2428915) and Dynare 5.5 (arm64 version).
-- The Julia version is 1.11.3; all package versions are fixed and can be found in the 'Project.toml' file. 
+- The scripts were run on a MacBook Air M1 running Matlab R2024b 
+  Update 5 (24.2.0.2863752) and Dynare 5.5 (arm64 version).
+- The Julia version is 1.11.4; all package versions are fixed and can be found in the 'Project.toml' file. 
 ## Sources
 - Dynare replication files for Smets & Wouters (2007) were obtained from Johannes Pfeifer's replication repository (https://github.com/JohannesPfeifer/DSGE_mod). 
 
