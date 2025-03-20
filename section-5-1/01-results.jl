@@ -20,7 +20,6 @@ CairoMakie.activate!()
 include(scriptsdir("utils-data-wrangling.jl"))
 include(scriptsdir("svar-utils.jl"))
 include(scriptsdir("svar-internal-instrument.jl"))
-include(scriptsdir("svar-external-instrument.jl"));
 include(scriptsdir("plot.jl"))
 
 ################################################################################
