@@ -9,7 +9,7 @@ clear;
 clc;
 
 % ADJUST THE FOLLOWING LINE
-addpath("/Applications/Dynare/5.5-arm64/matlab");
+addpath("/Applications/Dynare/6.3-arm64/matlab/");
 
 addpath("functions/")
 cd SW2007;
