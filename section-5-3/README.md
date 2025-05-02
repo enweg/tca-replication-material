@@ -1,13 +1,7 @@
 # Replication of Section 5.3: The Role of Inflation Expectations in DSGEs
 ## How to replicate? 
-- To replicate the results, first open the 'run001_sw2007.m' and 'run003_sw2007.m' files and adjust the path to the Dynare installation on line 12. 
-- After adjusting the installation path of Dynare, running the entire files
-  will replicate the results. Results are saved in the 'output' folder as 
-  CSV files. 
-- Figures can be obtained by running 'run002_sw2007_figures.m' and 'run004_sw2007_figures.m' which produce figures for the two decompositions separately. 
-- Figures can also be obtained by using the `run99_figures.jl` script, which uses Julia instead of Matlab. This file also creates the figure of the paper in which both decompositions are depicted in a single figure. To run this file, Julia must be installed. For guidance on this, see 
-  - Julia installation: https://julialang.org/downloads/
 
+- Please read the 'replication-instructions.pdf' file in the root folder. 
 ## Folder Structure
 - 'SW2007' contains the replication material for Smets & Wouters (2007)
     - See the comments in 'SW2007.mod' for the original source and information 

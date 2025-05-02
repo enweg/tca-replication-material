@@ -9,7 +9,7 @@ The replication material is split into three parts.
 2. The folder 'section-5-2' contains all replication material for Section 5.2 "Anticipation Effects of Government Spending". Replication requires the Julia language. 
 3. The folder 'section-5-3' contains all replication material for Section 5.3 "The Role of Inflation Expecations in DSGEs". Replication requires Matlab. Plots can also be created using Julia. 
 
-All folders contain 'README.md' files explaining how to replicate the results. 
+Detailed replication instructions are given in [replication-instructions.pdf](./replication-instructions.pdf). Each section's folder contains additional details regarding the folder structure and sources. These details are not needed for the replication. 
 
 ## Related Code 
-Some of the replication relies on the Julia package "TransmissionChannelAnalysis.jl" which can be found on [GitHub](https://github.com/enweg/TransmissionChannelAnalysis.jl).
+Some of the replication relies on the Julia package "TransmissionChannelAnalysis.jl" which can be found on [GitHub](https://github.com/enweg/TransmissionChannelAnalysis.jl). A Matlab TCA Toolbox is also available on [GitHub](https://github.com/enweg/tca-matlab-toolbox). 
