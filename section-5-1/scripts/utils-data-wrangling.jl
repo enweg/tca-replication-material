@@ -9,7 +9,11 @@ end
 """
 Replace all `missing` entries in a vector with zero.
 """
-function _replace_missing_zero(x::AbstractVector{Union{Missing, T}}) where {T<:Real}
+function _replace_missing_zero(x::AbstractVector{Union{Missing,T}}) where {T<:Real}
     x[ismissing.(x)] .= zero(T)
-    return x
+    return T.(x)
+end
+
+function diff(x)
+    return vcat(missing, x[2:end] - x[1:(end-1)])
 end

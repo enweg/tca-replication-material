@@ -2,31 +2,29 @@
 # Preliminaries
 ################################################################################
 
-using Pkg; 
-Pkg.add("DrWatson")  # replication manager
-using DrWatson
-@quickactivate "instrument-comparison"  # activating the replication environment
+using Pkg;
+Pkg.activate(".");  # Assumed current working directory is 'section-5-1'
 Pkg.instantiate()  # installing all required packages
 
 using JLD2
 using DataFrames, CSV, DataFramesMeta, TSFrames
 using Random, Distributions
 using LinearAlgebra
-using Dates 
+using Dates
 using CairoMakie
 CairoMakie.activate!()
 
 # loading utility functions
-include(scriptsdir("utils-data-wrangling.jl"))
-include(scriptsdir("svar-utils.jl"))
-include(scriptsdir("svar-internal-instrument.jl"))
-include(scriptsdir("plot.jl"))
+include("./scripts/utils-data-wrangling.jl")
+include("./scripts/svar-utils.jl")
+include("./scripts/svar-internal-instrument.jl")
+include("./scripts/plot.jl")
 
 ################################################################################
 # Loading data
 ################################################################################
 
-data_mckay_wolf = CSV.read(datadir("mckay_wolf_2023", "_data.csv"), DataFrame)
+data_mckay_wolf = CSV.read("./data/mckay_wolf_2023/_data.csv", DataFrame)
 data_mckay_wolf = @chain data_mckay_wolf begin
     @rename begin
         :ygap = :ygap_hp
@@ -34,7 +32,7 @@ data_mckay_wolf = @chain data_mckay_wolf begin
     end
     @transform :lpgdp = log.(:pgdp)
     @transform :dlpgdp = diff(:lpgdp)
-    @transform :infl = 4*:dlpgdp*100
+    @transform :infl = 4 * :dlpgdp * 100
 end
 
 vardata = @chain data_mckay_wolf begin
@@ -53,10 +51,22 @@ data_gk = Matrix(Float64.(data_gk));
 
 # computing structural IRFs via internal instruments
 # See `svar-internal-instrument.jl` file in `scripts` for more details.  
-relative_irfs_gk = internal_instrument_SVAR(data_gk, 4, 0:40; include_constant = true, include_linear_trend = true);
+relative_irfs_gk = internal_instrument_SVAR(
+    data_gk,
+    4,
+    0:40;
+    include_constant = true,
+    include_linear_trend = true,
+);
 
 # getting the orthogonal IRFs / the Cholesky IRFs 
-phi_tilde = orthogonal_irfs(data_gk[:, 2:end], 4, 0:40; include_constant = true, include_linear_trend = true);
+phi_tilde = orthogonal_irfs(
+    data_gk[:, 2:end],
+    4,
+    0:40;
+    include_constant = true,
+    include_linear_trend = true,
+);
 
 # We are interested in the effect not going through the fed funds rate 
 # contemporaneously. So we are interested in the transmission query 
@@ -67,18 +77,23 @@ phi_tilde = orthogonal_irfs(data_gk[:, 2:end], 4, 0:40; include_constant = true,
 # shock on the ffr with the cholesky irf of a shock to the ffr on other variables, 
 # and dividing this (normalising this) by the response of a cholesky ffr shock 
 # on ffr itself.
-irfs_transmission_gk = relative_irfs_gk[:, 1:1, :] .- relative_irfs_gk[1, 1, 1]*phi_tilde[:, 1:1, :]/phi_tilde[1, 1, 1];
+irfs_transmission_gk =
+    relative_irfs_gk[:, 1:1, :] .-
+    relative_irfs_gk[1, 1, 1] * phi_tilde[:, 1:1, :] / phi_tilde[1, 1, 1];
 
 # setting the shock size to 25bps
 gk_total = relative_irfs_gk[:, 1:1, :] * 0.25
 gk_non_contemporaneous = irfs_transmission_gk[:, 1:1, :] * 0.25
 gk_contemporaneous = gk_total .- gk_non_contemporaneous;
 
-save(projectdir("output", "gk.jld2"), Dict(
-    "gk_total" => gk_total, 
-    "gk_non_contemporaneous" => gk_non_contemporaneous, 
-    "gk_contemporaneous" => gk_contemporaneous
-))
+save(
+    "./output/gk.jld2",
+    Dict(
+        "gk_total" => gk_total,
+        "gk_non_contemporaneous" => gk_non_contemporaneous,
+        "gk_contemporaneous" => gk_contemporaneous,
+    ),
+)
 
 ################################################################################
 # Romer and Romer
@@ -89,20 +104,36 @@ names_rr = names(data_rr)
 data_rr = Matrix(Float64.(data_rr));
 
 # structural irfs
-relative_irfs_rr = internal_instrument_SVAR(data_rr, 4, 0:40; include_constant = true, include_linear_trend = true);
+relative_irfs_rr = internal_instrument_SVAR(
+    data_rr,
+    4,
+    0:40;
+    include_constant = true,
+    include_linear_trend = true,
+);
 
 # cholesky irfs
-phi_tilde = orthogonal_irfs(data_rr[:, 2:end], 4, 0:40; include_constant = true, include_linear_trend = true);
+phi_tilde = orthogonal_irfs(
+    data_rr[:, 2:end],
+    4,
+    0:40;
+    include_constant = true,
+    include_linear_trend = true,
+);
 # computation is the same as above 
-irfs_transmission_rr = relative_irfs_rr[:, 1:1, :] .- relative_irfs_rr[1, 1, 1]*phi_tilde[:, 1:1, :]/phi_tilde[1, 1, 1];
+irfs_transmission_rr =
+    relative_irfs_rr[:, 1:1, :] .-
+    relative_irfs_rr[1, 1, 1] * phi_tilde[:, 1:1, :] / phi_tilde[1, 1, 1];
 
 rr_total = relative_irfs_rr[:, 1:1, :] * 0.25
 rr_non_contemporaneous = irfs_transmission_rr[:, 1:1, :] * 0.25
 rr_contemporaneous = rr_total .- rr_non_contemporaneous;
 
-save(projectdir("output", "rr.jld2"), Dict(
-    "rr_total" => rr_total, 
-    "rr_non_contemporaneous" => rr_non_contemporaneous, 
-    "rr_contemporaneous" => rr_contemporaneous
-))
-
+save(
+    "output/rr.jld2",
+    Dict(
+        "rr_total" => rr_total,
+        "rr_non_contemporaneous" => rr_non_contemporaneous,
+        "rr_contemporaneous" => rr_contemporaneous,
+    ),
+)
