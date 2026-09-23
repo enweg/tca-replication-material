@@ -11,6 +11,9 @@ Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
 StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 TransmissionChannelAnalysis = "d500094b-e8d7-4ee4-9514-4e3996dd73c3"
 
+[sources]
+TransmissionChannelAnalysis = {rev = "main", url = "https://github.com/enweg/TransmissionChannelAnalysis.jl.git#e2552c5"}
+
 [compat]
 CSV = "= 0.10.16"
 CairoMakie = "= 0.13.10"
