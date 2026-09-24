@@ -1,5 +1,10 @@
 using Pkg
 Pkg.activate(".")  # assumes current working directory is 'section-5-2'
+# Julia 1.10 ignores the [sources] section of Project.toml, so install
+# TransmissionChannelAnalysis from its GitHub release v0.2.1 explicitly.
+if VERSION < v"1.11"
+    Pkg.add(url = "https://github.com/enweg/TransmissionChannelAnalysis.jl.git", rev = "v0.2.1")
+end
 Pkg.resolve()
 Pkg.instantiate()
 
