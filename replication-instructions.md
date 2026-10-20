@@ -18,7 +18,7 @@
 5. [Running the replication](#running-the-replication)
    - Section 5.1: [Direct and Indirect Effects of Monetary Policy (Julia)](#direct-and-indirect-effects-of-monetary-policy-julia)
    - Section 5.2: [Anticipation effects of government spending (Julia)](#anticipation-effects-of-government-spending-julia)
-   - Section 5.3: [TCA in a DSGE model (MATLAB and Dynare)](#tca-in-a-dsge-model-matlab-and-dynare)
+   - Section 5.3: [Consumption and Investment Channels of Monetary Policy (MATLAB and Dynare)](#consumption-and-investment-channels-of-monetary-policy-matlab-and-dynare)
 6. [Output-to-paper mapping](#output-to-paper-mapping)
 7. [Expected warnings (harmless)](#expected-warnings-harmless)
 8. [Repository structure](#repository-structure)
@@ -33,11 +33,11 @@ These instructions reproduce all results in Section 5 of the paper:
 | ------- | ------------------------------------------------------------------------------- | --------------- | ----------------------------------- |
 | 5.1     | Direct and Indirect Effects of Monetary Policy (SVAR with internal instruments) | Julia           | 6 min first run, < 1 min afterwards |
 | 5.2     | Anticipation effects of government spending (local projections)                 | Julia           | 3 min first run, < 1 min afterwards |
-| 5.3     | Transmission channels vs. counterfactuals in a New Keynesian DSGE model         | MATLAB + Dynare | 11 min                              |
+| 5.3     | Consumption and Investment Channels of Monetary Policy (DSGE model)             | MATLAB + Dynare | 11 min                              |
 
 \*Measured on an Apple M1 (8 cores, 16 GB RAM), macOS 15.7. "First run" includes downloading and precompiling Julia packages. A full replication of all three sections, from a clean clone with no Julia packages installed, took **16 minutes**.
 
-All computations are deterministic (OLS, local projections, and first-order perturbation of a linear DSGE model). No random numbers are drawn, so no seeds are needed. Replication was tested from a clean copy of the repository with Julia 1.13.0 and 1.10.12, and with MATLAB R2024b using Dynare 6.3 and 5.5. All numerical results and figures matched the stored ones, either exactly or up to floating-point rounding (< 1e-11).
+All computations are deterministic (OLS, local projections, and first-order perturbation of a linear DSGE model). No random numbers are drawn, so no seeds are needed. Replication was tested from a clean copy of the repository with Julia 1.13.0 and 1.10.12, and with MATLAB R2024b using Dynare 6.3 and 5.5. All numerical results and figures matched the stored ones, either exactly or up to floating-point rounding (< 1e-11). The only exception is the field `oo_.time` in the `results*.mat` files written by `run00_computation_tca_vs_counterfactual.m`: Dynare stores the computation time of the run there, so this field differs on every run.
 
 ### Figures in the paper
 
@@ -215,7 +215,7 @@ julia 01-estimation-and-plotting.jl
 
 Whichever script runs first installs this section's packages (about 2–3 min). The versions differ from those in Section 5.1, so they are installed separately. On Julia 1.10, both scripts first install `TransmissionChannelAnalysis.jl` from its GitHub release v0.2.1 (see [Computational requirements](#computational-requirements)).
 
-### TCA in a DSGE model (MATLAB and Dynare)
+### Consumption and Investment Channels of Monetary Policy (MATLAB and Dynare)
 
 Reproduces Section 5.3 of the paper.
 
