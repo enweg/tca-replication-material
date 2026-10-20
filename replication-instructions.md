@@ -55,7 +55,7 @@ Columns used: `ygap_hp` (output gap), `pgdp` (GDP deflator, converted to annuali
 **Source data** in `section-5-2/data/raw/`. `data/raw/README.md` records the retrieval details.
 
 - `RZDAT.xlsx` and `RZDAT.csv`: replication files of Ramey, V. A. and Zubairy, S. (2018), _JPE_ 126(2), <https://doi.org/10.1086/696277>, from <https://econweb.ucsd.edu/~vramey/research.html> (retrieved 02/11/2023). The CSV is the `rzdata` sheet of the XLSX. Used by `00-data-transforms.jl`.
-- `military-expenditure-as-a-share-of-gdp-long.csv`: Our World in Data, <https://ourworldindata.org/grapher/military-expenditure-as-a-share-of-gdp-long> (retrieved 09/02/2024). Used by `00-data-transforms.jl`.
+- `military-expenditure-as-a-share-of-gdp-long.csv`: Our World in Data, <https://ourworldindata.org/grapher/military-expenditure-as-a-share-of-gdp-long> (retrieved 09/02/2024). Licensed under Creative Commons BY ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Recommended citation: Barnum et al. – Global Military Spending Dataset (2025) – with minor processing by Our World in Data. This is the citation Our World in Data currently gives for the series; the file itself was downloaded on 09/02/2024. Used by `00-data-transforms.jl`.
 - `Defense.xls`, `Defense_quarterly.csv`, and `Defense_annual.csv`: FRED/ALFRED national defense consumption expenditures and gross investment, series `A997RC1Q027SBEA` (quarterly) and `A997RC1A027NBEA` (annual), vintage 2024-01-25. The CSVs are the two sheets of the XLS. Used by `00-data-transforms.jl`.
 - `Ramey_Govt_Public_Data.*`: replication files of Ramey, V. A. (2011), _QJE_ 126(1), <https://doi.org/10.1093/qje/qjq008>. Not used by any script; kept for reference.
 

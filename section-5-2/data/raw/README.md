@@ -12,6 +12,9 @@
 
 ## military-expenditure-as-a-share-of-gdp-long
 - Data was downloaded from https://ourworldindata.org/grapher/military-expenditure-as-a-share-of-gdp-long?time=earliest..2016 at 14:30 09/02/2024
+- The data are licensed under Creative Commons BY (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/)
+- Recommended citation: Barnum et al. – Global Military Spending Dataset (2025) – with minor processing by Our World in Data
+- This is the citation Our World in Data currently gives for the series; the file itself was downloaded on 09/02/2024
 
 ## Defense data
 - Defense.xls was downloaded from FRED. All important information is given in the XLS file. 
