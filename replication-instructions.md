@@ -6,6 +6,7 @@
 ## Contents
 
 1. [Overview](#overview)
+   - [Figures in the paper](#figures-in-the-paper)
 2. [Data availability and provenance](#data-availability-and-provenance)
 3. [Computational requirements](#computational-requirements)
    - [Software](#software)
@@ -37,6 +38,20 @@ These instructions reproduce all results in Section 5 of the paper:
 \*Measured on an Apple M1 (8 cores, 16 GB RAM), macOS 15.7. "First run" includes downloading and precompiling Julia packages. A full replication of all three sections, from a clean clone with no Julia packages installed, took **16 minutes**.
 
 All computations are deterministic (OLS, local projections, and first-order perturbation of a linear DSGE model). No random numbers are drawn, so no seeds are needed. Replication was tested from a clean copy of the repository with Julia 1.13.0 and 1.10.12, and with MATLAB R2024b using Dynare 6.3 and 5.5. All numerical results and figures matched the stored ones, either exactly or up to floating-point rounding (< 1e-11).
+
+### Figures in the paper
+
+- **Figure 6** (Section 5.1): `instrument-comparison-GK.pdf` and `instrument-comparison-RR.pdf` together, in `section-5-1/plots/`. Created by `02-plots.jl`.
+- **Figure 7** (Section 5.2): `ramey-anticipation-direct-measure.pdf`, in `section-5-2/plots/`. Created by `01-estimation-and-plotting.jl`.
+- **Figure 8** (Section 5.3): `tca-in-counterfactual-delta.pdf`, in `section-5-3/outputs/tca-in-counterfactual/`. Created by `run03_plots_tca_in_counterfactual_delta.m`.
+
+The scripts also create two sets of plots that are **not used in the paper**:
+
+- `FRED-OWID-comparison*.pdf`, in `section-5-2/plots/`: diagnostics of the data construction. Created by `00-data-transforms.jl`.
+- `sec2-tca-vs-counterfactual.pdf`, in\
+  `section-5-3/outputs/tca-vs-counterfactual/`. Created by `run01_plots_section2_tca_vs_counterfactual.m`.
+
+See [Output-to-paper mapping](#output-to-paper-mapping) for all files the scripts create.
 
 ---
 
@@ -175,7 +190,7 @@ julia 02-plots.jl
   `output/gk.jld2`,\
   `output/rr.jld2`.
 - `02-plots.jl`: Plots the FFR and inflation panels.\
-  Output:\
+  Output (together **Figure 6** in the paper):\
   `plots/instrument-comparison-GK.pdf`,\
   `plots/instrument-comparison-RR.pdf`.
 
@@ -193,9 +208,9 @@ julia 01-estimation-and-plotting.jl
   Output:\
   `data/spending_quarter.csv`,\
   `data/data_lp.csv`,\
-  `plots/FRED-OWID-comparison*.pdf`.
+  `plots/FRED-OWID-comparison*.pdf` (not used in the paper).
 - `01-estimation-and-plotting.jl`: Estimates LPs with 4 lags, horizons 0–20, and the Ramey–Zubairy news shock ordered first. Decomposes the responses of GDP and defense spending into an anticipation channel (not through defense spending) and an implementation channel.\
-  Output:\
+  Output (**Figure 7** in the paper):\
   `plots/ramey-anticipation-direct-measure.pdf`.
 
 Whichever script runs first installs this section's packages (about 2–3 min). The versions differ from those in Section 5.1, so they are installed separately. On Julia 1.10, both scripts first install `TransmissionChannelAnalysis.jl` from its GitHub release v0.2.1 (see [Computational requirements](#computational-requirements)).
@@ -233,13 +248,13 @@ matlab -batch "run03_plots_tca_in_counterfactual_delta"
   Output (in `outputs/tca-vs-counterfactual/`):\
   `results*.mat`.
 - `run01_…` (runtime about 30 s): Plots the inflation response in three panels (Counterfactual, TCA, TCA closest to counterfactual), horizons 0–8.\
-  Output (in `outputs/tca-vs-counterfactual/`):\
+  Output (in `outputs/tca-vs-counterfactual/`; not used in the paper):\
   `sec2-tca-vs-counterfactual.pdf`.
 - `run02_…` (runtime about 9 min): Re-solves the baseline model for depreciation rates $\delta = 0.001, 0.002, \ldots, 0.050$ (50 values) and computes the channels for each.\
   Output (in `outputs/tca-in-counterfactual/`):\
   `resultsDelta-from0p001-by0p001-to0p05.mat`.
 - `run03_…` (runtime about 20 s): Plots the responses and channels against $\delta$ for $\delta \in [0.0125, 0.05]$.\
-  Output (in `outputs/tca-in-counterfactual/`):\
+  Output (in `outputs/tca-in-counterfactual/`; **Figure 8** in the paper):\
   `tca-in-counterfactual-delta.pdf`.
 
 `run01` needs only the output of `run00`, and `run03` needs only the output of `run02`. Neither uses Dynare. Because the `.mat` files are included, the plotting scripts can be run on their own.
@@ -250,18 +265,18 @@ Running Dynare regenerates the files in `dynare-models/` (the `+model_*` folders
 
 ## Output-to-paper mapping
 
-- Section 5.1, in `section-5-1/plots/`:
-  - figure with the Gertler–Karadi instrument: `instrument-comparison-GK.pdf`
-  - figure with the Romer–Romer instrument: `instrument-comparison-RR.pdf`
+- Section 5.1, in `section-5-1/plots/`, together **Figure 6**:
+  - Gertler–Karadi instrument: `instrument-comparison-GK.pdf`
+  - Romer–Romer instrument: `instrument-comparison-RR.pdf`
 - Section 5.2, in `section-5-2/plots/`:
-  - anticipation vs. implementation channels (GDP, defense spending):\
+  - **Figure 7**, anticipation vs. implementation channels (GDP, defense spending):\
     `ramey-anticipation-direct-measure.pdf`
-  - data construction diagnostics (not paper figures):\
+  - data construction diagnostics (not used in the paper):\
     `FRED-OWID-comparison*.pdf`
 - Section 5.3, in `section-5-3/outputs/`:
-  - TCA vs. counterfactual (inflation response):\
+  - TCA vs. counterfactual (inflation response; not used in the paper):\
     `tca-vs-counterfactual/sec2-tca-vs-counterfactual.pdf`
-  - channels as a function of the depreciation rate $\delta$:\
+  - **Figure 8**, channels as a function of the depreciation rate $\delta$:\
     `tca-in-counterfactual/tca-in-counterfactual-delta.pdf`
 
 ---
