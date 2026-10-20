@@ -1,10 +1,5 @@
 # Sources
 
-## Ramey_Govt_Public_Data
-- The XLS file was obtained form the replication material of Ramey, V. A. (2011). Identifying Government Spending Shocks: It’s all in the Timing*. The Quarterly Journal of Economics, 126(1), 1–50. https://doi.org/10.1093/qje/qjq008
-- These files were obtained from https://econweb.ucsd.edu/~vramey/research.html and retrieved at 13:00 2023/11/02
-- The CSV files were manually created by saving the "Data for Initial VARs 47-08" and "Data for 1939-2008"  Worksheets as CSV. The latter has a "_sheet2" attached to the name.
-
 ## RZDAT
 - The XLSX file was obtained from the replication material of Ramey, V. A., & Zubairy, S. (2018). Government Spending Multipliers in Good Times and in Bad: Evidence from US Historical Data. Journal of Political Economy, 126(2), 850–901. https://doi.org/10.1086/696277
 - These files were obtained from https://econweb.ucsd.edu/~vramey/research.html and retrieved at 13:00 2023/11/02
