@@ -128,7 +128,7 @@ git checkout <release-tag>
 
 Without git: on the _Releases_ page, download the release's source code ZIP and extract it.
 
-Below, **`<root>`** denotes the folder that contains `README.md`, `replication-instructions.md`, and the three `section-5-*` folders. You have the correct version if `<root>` contains `replication-instructions.md` and the folder `section-5-3` contains `run00_computation_tca_vs_counterfactual.m`.
+Below, **`<root>`** denotes the folder that contains `README.md`, `replication-instructions.md`, and the three `section-5-*` folders.
 
 ### MATLAB TCA Toolbox (included)
 
