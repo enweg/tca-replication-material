@@ -1,15 +1,16 @@
 # Replication Material for "Transmission Channel Analysis in Dynamic Models"
 
 > [!NOTE]
-> The paper "Transmission Channel Analysis in Dynamic Models" can be found on [arXiv](https://arxiv.org/abs/2405.18987). The different versions on arXiv are tracked by the different releases here on GitHub. Releases are located in the right side-bar on deskop computers and laptops and on the bottom of the page on mobile devices. 
+> The paper "Transmission Channel Analysis in Dynamic Models" can be found on [arXiv](https://arxiv.org/abs/2405.18987). The different versions on arXiv are tracked by the different releases here on GitHub. Releases are located in the right side-bar on desktop computers and laptops and on the bottom of the page on mobile devices.
 
-The replication material is split into three parts. 
+The replication material is split into three parts.
 
-1. The folder 'section-5-1' contains all replication material for Section 5.1 "Forward Guidance of Monetary Policy". Replication requires the Julia language. 
-2. The folder 'section-5-2' contains all replication material for Section 5.2 "Anticipation Effects of Government Spending". Replication requires the Julia language. 
-3. The folder 'section-5-3' contains all replication material for Section 5.3 "The Role of Inflation Expecations in DSGEs". Replication requires Matlab. Plots can also be created using Julia. 
+1. The folder 'section-5-1' contains all replication material for Section 5.1 "Direct and Indirect Effects of Monetary Policy". Replication requires the Julia language.
+2. The folder 'section-5-2' contains all replication material for Section 5.2 "Anticipation Effects of Government Spending". Replication requires the Julia language.
+3. The folder 'section-5-3' contains all replication material for Section 5.3 "Consumption and Investment Channels of Monetary Policy". Replication requires Matlab.
 
-Detailed replication instructions are given in [replication-instructions.pdf](./replication-instructions.pdf). Each section's folder contains additional details regarding the folder structure and sources. These details are not needed for the replication. 
+Detailed replication instructions are given in [replication-instructions.pdf](./replication-instructions.pdf). Each section's folder contains additional details regarding the folder structure and sources. These details are not needed for the replication.
 
-## Related Code 
-Some of the replication relies on the Julia package "TransmissionChannelAnalysis.jl" which can be found on [GitHub](https://github.com/enweg/TransmissionChannelAnalysis.jl). A Matlab TCA Toolbox is also available on [GitHub](https://github.com/enweg/tca-matlab-toolbox). 
+## Related Code
+
+Some of the replication relies on the Julia package "TransmissionChannelAnalysis.jl" which can be found on [GitHub](https://github.com/enweg/TransmissionChannelAnalysis.jl). A Matlab TCA Toolbox is also available on [GitHub](https://github.com/enweg/tca-matlab-toolbox).

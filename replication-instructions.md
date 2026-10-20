@@ -15,7 +15,7 @@
    - [Main repository](#main-repository)
    - [MATLAB TCA Toolbox (included)](#matlab-tca-toolbox-included)
 5. [Running the replication](#running-the-replication)
-   - Section 5.1: [Forward guidance (Julia)](#forward-guidance-julia)
+   - Section 5.1: [Direct and Indirect Effects of Monetary Policy (Julia)](#forward-guidance-julia)
    - Section 5.2: [Anticipation effects of government spending (Julia)](#anticipation-effects-of-government-spending-julia)
    - Section 5.3: [TCA in a DSGE model (MATLAB and Dynare)](#tca-in-a-dsge-model-matlab-and-dynare)
 6. [Output-to-paper mapping](#output-to-paper-mapping)
@@ -28,11 +28,11 @@
 
 These instructions reproduce all results in Section 5 of the paper:
 
-| Section | Application | Software | Approx. runtime* |
-|---|---|---|---|
-| 5.1 | Forward guidance of monetary policy (SVAR with internal instruments) | Julia | 6 min first run, < 1 min afterwards |
-| 5.2 | Anticipation effects of government spending (local projections) | Julia | 3 min first run, < 1 min afterwards |
-| 5.3 | Transmission channels vs. counterfactuals in a New Keynesian DSGE model | MATLAB + Dynare | 11 min |
+| Section | Application                                                                     | Software        | Approx. runtime*                    |
+| ------- | ------------------------------------------------------------------------------- | --------------- | ----------------------------------- |
+| 5.1     | Direct and Indirect Effects of Monetary Policy (SVAR with internal instruments) | Julia           | 6 min first run, < 1 min afterwards |
+| 5.2     | Anticipation effects of government spending (local projections)                 | Julia           | 3 min first run, < 1 min afterwards |
+| 5.3     | Transmission channels vs. counterfactuals in a New Keynesian DSGE model         | MATLAB + Dynare | 11 min                              |
 
 \*Measured on an Apple M1 (8 cores, 16 GB RAM), macOS 15.7. "First run" includes downloading and precompiling Julia packages. A full replication of all three sections, from a clean clone with no Julia packages installed, took **16 minutes**.
 
@@ -46,7 +46,7 @@ All data needed for replication are included in the repository. No data access a
 
 ### Data for Section 5.1: `section-5-1/data/mckay_wolf_2023/_data.csv`
 
-A copy of the quarterly dataset from the replication package of McKay, A. and Wolf, C. K. (2023), "What Can Time-Series Regressions Tell Us About Policy Counterfactuals?", *Econometrica* 91(5), <https://doi.org/10.3982/ECTA21045>. It was obtained on 17/06/2023. `construction.txt` in the same folder documents the original source of every series.
+A copy of the quarterly dataset from the replication package of McKay, A. and Wolf, C. K. (2023), "What Can Time-Series Regressions Tell Us About Policy Counterfactuals?", _Econometrica_ 91(5), <https://doi.org/10.3982/ECTA21045>. It was obtained on 17/06/2023. `construction.txt` in the same folder documents the original source of every series.
 
 Columns used: `ygap_hp` (output gap), `pgdp` (GDP deflator, converted to annualised inflation), `ffr` (federal funds rate), `lpcom` (log commodity prices), `mp1_tc` (Gertler–Karadi high-frequency instrument), and `rr_3` (Romer–Romer shocks, Wieland–Yang update). Sample: 1969Q1–2007Q4 (156 quarters). Missing instrument values are set to zero in `01-results.jl`.
 
@@ -54,10 +54,10 @@ Columns used: `ygap_hp` (output gap), `pgdp` (GDP deflator, converted to annuali
 
 **Source data** in `section-5-2/data/raw/`. `data/raw/README.md` records the retrieval details.
 
-- `RZDAT.xlsx` and `RZDAT.csv`: replication files of Ramey, V. A. and Zubairy, S. (2018), *JPE* 126(2), <https://doi.org/10.1086/696277>, from <https://econweb.ucsd.edu/~vramey/research.html> (retrieved 02/11/2023). The CSV is the `rzdata` sheet of the XLSX. Used by `00-data-transforms.jl`.
+- `RZDAT.xlsx` and `RZDAT.csv`: replication files of Ramey, V. A. and Zubairy, S. (2018), _JPE_ 126(2), <https://doi.org/10.1086/696277>, from <https://econweb.ucsd.edu/~vramey/research.html> (retrieved 02/11/2023). The CSV is the `rzdata` sheet of the XLSX. Used by `00-data-transforms.jl`.
 - `military-expenditure-as-a-share-of-gdp-long.csv`: Our World in Data, <https://ourworldindata.org/grapher/military-expenditure-as-a-share-of-gdp-long> (retrieved 09/02/2024). Used by `00-data-transforms.jl`.
 - `Defense.xls`, `Defense_quarterly.csv`, and `Defense_annual.csv`: FRED/ALFRED national defense consumption expenditures and gross investment, series `A997RC1Q027SBEA` (quarterly) and `A997RC1A027NBEA` (annual), vintage 2024-01-25. The CSVs are the two sheets of the XLS. Used by `00-data-transforms.jl`.
-- `Ramey_Govt_Public_Data.*`: replication files of Ramey, V. A. (2011), *QJE* 126(1), <https://doi.org/10.1093/qje/qjq008>. Not used by any script; kept for reference.
+- `Ramey_Govt_Public_Data.*`: replication files of Ramey, V. A. (2011), _QJE_ 126(1), <https://doi.org/10.1093/qje/qjq008>. Not used by any script; kept for reference.
 
 **Constructed data** in `section-5-2/data/`, both created by `00-data-transforms.jl`:
 
@@ -70,12 +70,12 @@ Columns used: `ygap_hp` (output gap), `pgdp` (GDP deflator, converted to annuali
 
 ### Software
 
-| Software | Version tested | Needed for |
-|---|---|---|
-| Julia | **1.13.0** and 1.10.12 (LTS) | Sections 5.1, 5.2 |
-| MATLAB | R2024b (Update 5) | Section 5.3 |
-| Dynare | **6.3** and 5.5 | Section 5.3 |
-| MATLAB TCA Toolbox | **v0.3.0** (included) | Section 5.3 |
+| Software           | Version tested               | Needed for        |
+| ------------------ | ---------------------------- | ----------------- |
+| Julia              | **1.13.0** and 1.10.12 (LTS) | Sections 5.1, 5.2 |
+| MATLAB             | R2024b (Update 5)            | Section 5.3       |
+| Dynare             | **6.3** and 5.5              | Section 5.3       |
+| MATLAB TCA Toolbox | **v0.3.0** (included)        | Section 5.3       |
 
 - **Julia 1.10 or newer is required.** Julia 1.11.9 and 1.12.7 were also checked: both package environments install on them.
 - **MATLAB's Control System Toolbox is required** (`minreal` is called in the TCA toolbox). Parallel Computing Toolbox is optional (a `parfor` loop runs serially without it).
@@ -119,7 +119,7 @@ Run `import Pkg; Pkg.status()` from a section folder, after `Pkg.activate(".")`,
 
 If you received this package as an archive, for example from the journal's data repository, extract it and use that.
 
-Otherwise, download it from GitHub. **Use the release that matches the paper version you are replicating**, not the default branch. Each paper version is tagged as a release: see the repository's *Releases* page. The default branch may still hold an older version of the code. With git:
+Otherwise, download it from GitHub. **Use the release that matches the paper version you are replicating**, not the default branch. Each paper version is tagged as a release: see the repository's _Releases_ page. The default branch may still hold an older version of the code. With git:
 
 ```bash
 git clone https://github.com/enweg/tca-replication-material.git
@@ -127,7 +127,7 @@ cd tca-replication-material
 git checkout <release-tag>
 ```
 
-Without git: on the *Releases* page, download the release's source code ZIP and extract it.
+Without git: on the _Releases_ page, download the release's source code ZIP and extract it.
 
 Below, **`<root>`** denotes the folder that contains `README.md`, `replication-instructions.md`, and the three `section-5-*` folders. You have the correct version if `<root>` contains `replication-instructions.md` and the folder `section-5-3` contains `run00_computation_tca_vs_counterfactual.m`.
 
@@ -155,11 +155,11 @@ The three sections are independent and can be run in any order.
 
 - **Terminal:** use the commands shown in each subsection.
 - **Julia REPL:** start `julia`, then run `cd("<root>/section-5-1")` and `include("01-results.jl")`.
-- **VS Code** with the *Julia* extension: use **File > Open Folder** to open the *section folder*, open the script, and run **Julia: Execute File in REPL** (the play button at the top right).
+- **VS Code** with the _Julia_ extension: use **File > Open Folder** to open the _section folder_, open the script, and run **Julia: Execute File in REPL** (the play button at the top right).
 
 The first time each Julia environment is used, the script downloads and precompiles its packages. It then writes a `Manifest.toml` into the section folder; this file is not tracked by git.
 
-### Forward guidance (Julia)
+### Direct and Indirect Effects of Monetary Policy (Julia)
 
 Reproduces Section 5.1 of the paper.
 
@@ -190,7 +190,7 @@ julia 00-data-transforms.jl        # optional: rebuilds data/ from data/raw/
 julia 01-estimation-and-plotting.jl
 ```
 
-- `00-data-transforms.jl` (*optional*): Builds the quarterly defense spending series and the estimation dataset from `data/raw/`. Also writes diagnostic plots comparing the OWID-based series with FRED.\
+- `00-data-transforms.jl` (_optional_): Builds the quarterly defense spending series and the estimation dataset from `data/raw/`. Also writes diagnostic plots comparing the OWID-based series with FRED.\
   Output:\
   `data/spending_quarter.csv`,\
   `data/data_lp.csv`,\
@@ -269,13 +269,13 @@ Running Dynare regenerates the files in `dynare-models/` (the `+model_*` folders
 
 ## Expected warnings (harmless)
 
-| Where | Message | Why it is harmless |
-|---|---|---|
-| Section 5.1, `02-plots.jl` | ``Found `resolution` in the theme … deprecated`` (Makie) | Deprecated keyword; the figure is unaffected. |
-| Section 5.3, Dynare preprocessing | `WARNING: in the 'steady_state_model' block, variable '…' is not assigned a value` (33 times per model) | The model is linearised by hand, so all variables have a zero steady state. |
-| Section 5.3, baseline model | `Some of the parameters have no value (rk_bar, s_c, s_I) when using steady` | These parameters are computed by the `steady_state_model` block when `steady` runs. |
-| Section 5.3, no-consumption counterfactual | `Matrix is close to singular or badly scaled` | Intended: $\sigma = 10^{10}$ approximates $\sigma \to \infty$. |
-| Section 5.3, `matlab -batch` only | `CodeCache is full. Compiler has been disabled.` | Java message from MATLAB's graphics stack in batch mode. |
+| Where                                      | Message                                                                                                 | Why it is harmless                                                                  |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Section 5.1, `02-plots.jl`                 | ``Found `resolution` in the theme … deprecated`` (Makie)                                                | Deprecated keyword; the figure is unaffected.                                       |
+| Section 5.3, Dynare preprocessing          | `WARNING: in the 'steady_state_model' block, variable '…' is not assigned a value` (33 times per model) | The model is linearised by hand, so all variables have a zero steady state.         |
+| Section 5.3, baseline model                | `Some of the parameters have no value (rk_bar, s_c, s_I) when using steady`                             | These parameters are computed by the `steady_state_model` block when `steady` runs. |
+| Section 5.3, no-consumption counterfactual | `Matrix is close to singular or badly scaled`                                                           | Intended: $\sigma = 10^{10}$ approximates $\sigma \to \infty$.                      |
+| Section 5.3, `matlab -batch` only          | `CodeCache is full. Compiler has been disabled.`                                                        | Java message from MATLAB's graphics stack in batch mode.                            |
 
 ---
 
