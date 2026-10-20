@@ -15,7 +15,7 @@
    - [Main repository](#main-repository)
    - [MATLAB TCA Toolbox (included)](#matlab-tca-toolbox-included)
 5. [Running the replication](#running-the-replication)
-   - Section 5.1: [Direct and Indirect Effects of Monetary Policy (Julia)](#forward-guidance-julia)
+   - Section 5.1: [Direct and Indirect Effects of Monetary Policy (Julia)](#direct-and-indirect-effects-of-monetary-policy-julia)
    - Section 5.2: [Anticipation effects of government spending (Julia)](#anticipation-effects-of-government-spending-julia)
    - Section 5.3: [TCA in a DSGE model (MATLAB and Dynare)](#tca-in-a-dsge-model-matlab-and-dynare)
 6. [Output-to-paper mapping](#output-to-paper-mapping)
